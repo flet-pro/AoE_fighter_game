@@ -1,0 +1,16 @@
+.DS_Store
+.tools/
+__pycache__/
+*.pyc
+game/.import/
+game/exports/
+
+# Local configuration and credentials
+.env
+.env.*
+*.pem
+*.key
+game/export_presets.cfg
+
+# The unpacked source artwork is included instead of this duplicate archive.
+AoE Animation-*.zip

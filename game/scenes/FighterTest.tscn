@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://animations/red_frames.tres" type="SpriteFrames" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 300 )
+
+[node name="FighterTest" type="Node2D"]
+
+[node name="BlackFighter" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 418 )
+strike_action = "p1_strike"
+left_action = "p1_left"
+right_action = "p1_right"
+up_action = "p1_up"
+opponent_path = NodePath("../RedFighter")
+
+[node name="BodyCollision" parent="BlackFighter" index="0"]
+position = Vector2( 10, -100 )
+
+[node name="RedFighter" parent="." instance=ExtResource( 1 )]
+position = Vector2( 704, 418 )
+strike_action = "p2_strike"
+left_action = "p2_left"
+right_action = "p2_right"
+up_action = "p2_up"
+opponent_path = NodePath("../BlackFighter")
+
+[node name="BodyCollision" parent="RedFighter" index="0"]
+position = Vector2( -10, -100 )
+
+[node name="AnimatedSprite" parent="RedFighter/Visuals" index="0"]
+frames = ExtResource( 2 )
+flip_h = true
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 512, 428 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource( 1 )
+
+[node name="Left_wall" type="StaticBody2D" parent="."]
+position = Vector2( -10, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left_wall"]
+shape = SubResource( 2 )
+
+[node name="Right_wall" type="StaticBody2D" parent="."]
+position = Vector2( 1034, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right_wall"]
+shape = SubResource( 2 )
+
+[editable path="BlackFighter"]
+[editable path="RedFighter"]
