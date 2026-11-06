@@ -12,5 +12,12 @@ game/exports/
 *.key
 game/export_presets.cfg
 
-# The unpacked source artwork is included instead of this duplicate archive.
+# Local learning material and tools, not needed to run the game
+/.factory/
+/AGENTS.md
+/GAME_BUILD_GUIDE.md
+/AoE Animation/
+/game/tests/
+
+# Duplicate original artwork archive
 AoE Animation-*.zip
